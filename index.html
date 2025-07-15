@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Prompt Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for Inter, fallback to system fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hide scrollbar for a cleaner look, but allow scrolling */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 p-4 sm:p-6 md:p-8 font-inter">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg my-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Form Generator Prompt Website CV</h2>
+
+        <form id="cvForm" class="space-y-6">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="nama" class="block text-gray-700 text-sm font-semibold mb-2">Nama lengkap Pembuat CV:</label>
+                <input type="text" id="nama" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="lahir" class="block text-gray-700 text-sm font-semibold mb-2">Tanggal Kelahiran (mm/dd/yyyy):</label>
+                <input type="text" id="lahir" name="lahir" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+            </div>
+
+            <!-- Desired Position -->
+            <div class="form-group">
+                <label for="posisi" class="block text-gray-700 text-sm font-semibold mb-2">Posisi yang ingin Dilamar:</label>
+                <input type="text" id="posisi" name="posisi" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+            </div>
+
+            <!-- Short Description -->
+            <div class="form-group">
+                <label for="deskripsi" class="block text-gray-700 text-sm font-semibold mb-2">Deskripsi Singkat Diri:</label>
+                <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y"></textarea>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="form-group grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                </div>
+                <div>
+                    <label for="telepon" class="block text-gray-700 text-sm font-semibold mb-2">Telepon:</label>
+                    <input type="text" id="telepon" name="telepon" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                </div>
+                <div class="md:col-span-2">
+                    <label for="sosmed" class="block text-gray-700 text-sm font-semibold mb-2">Media Sosial (Opsional):</label>
+                    <input type="text" id="sosmed" name="sosmed" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                </div>
+            </div>
+
+            <!-- Education History -->
+            <div class="form-group">
+                <label for="pendidikan" class="block text-gray-700 text-sm font-semibold mb-2">Riwayat Pendidikan:</label>
+                <textarea id="pendidikan" name="pendidikan" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y"></textarea>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="form-group">
+                <label for="pengalaman" class="block text-gray-700 text-sm font-semibold mb-2">Pengalaman Kerja:</label>
+                <textarea id="pengalaman" name="pengalaman" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y"></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div class="form-group">
+                <label for="skill" class="block text-gray-700 text-sm font-semibold mb-2">Keahlian / Skill:</label>
+                <textarea id="skill" name="skill" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y"></textarea>
+            </div>
+
+            <!-- Certifications -->
+            <div class="form-group">
+                <label for="sertifikasi" class="block text-gray-700 text-sm font-semibold mb-2">Sertifikasi (Opsional):</label>
+                <input type="text" id="sertifikasi" name="sertifikasi" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+            </div>
+
+            <!-- Hobbies/Interests -->
+            <div class="form-group">
+                <label for="hobi" class="block text-gray-700 text-sm font-semibold mb-2">Hobi / Minat (Opsional):</label>
+                <input type="text" id="hobi" name="hobi" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+            </div>
+
+            <!-- CV Style -->
+            <div class="form-group">
+                <label for="gaya_cv" class="block text-gray-700 text-sm font-semibold mb-2">Gaya CV:</label>
+                <select id="gaya_cv" name="gaya_cv" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                    <option>Dusty Rose</option>
+                    <option>Sage Green</option>
+                    <option>Ivory / Off White</option>
+                    <option>Lavender / Lilac</option>
+                    <option>Emerald Green</option>
+                    <option>Navy Blue</option>
+                    <option>Peach / Coral</option>
+                    <option>Black & White</option>
+                    <option>Dusty Blue</option>
+                </select>
+            </div>
+
+            <!-- Website Visual Style -->
+            <div class="form-group">
+                <label for="gaya_visual" class="block text-gray-700 text-sm font-semibold mb-2">Gaya Visual Website:</label>
+                <select id="gaya_visual" name="gaya_visual" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                    <option>Minimalis elegan</option>
+                    <option>Modern Profesional</option>
+                    <option>Floral / Soft Accent</option>
+                    <option>Modern glam</option>
+                    <option>Classic / Traditional</option>
+                    <option>Creative / Bohemian</option>
+                    <option>Dark mode / Moody</option>
+                    <option>Rustic / Natural</option>
+                </select>
+            </div>
+
+            <!-- Website Elements to Display -->
+            <div class="form-group">
+                <label class="block text-gray-700 text-sm font-semibold mb-2">Elemen Website yang ingin ditampilkan:</label>
+                <div class="checkbox-group flex flex-wrap gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="elemen" value="Foto Profil" class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-700">Foto Profil</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="elemen" value="Galeri Hasil Project" class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-700">Galeri Hasil Project</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="elemen" value="Kolom Komentar" class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                        <span class="ml-2 text-gray-700">Kolom Komentar</span>
+                    </label>
+                </div>
+                <div id="fotoInput" class="hidden mt-4">
+                    <label for="foto_link" class="block text-gray-700 text-sm font-semibold mb-2">Link Foto Profil (Google Drive):</label>
+                    <input type="text" id="foto_link" name="foto_link" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                </div>
+                <div id="galeriInput" class="hidden mt-4">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">6 Link Galeri Project (Google Drive):</label>
+                    <input type="text" name="galeri1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out mb-2">
+                    <input type="text" name="galeri2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out mb-2">
+                    <input type="text" name="galeri3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out mb-2">
+                    <input type="text" name="galeri4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out mb-2">
+                    <input type="text" name="galeri5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out mb-2">
+                    <input type="text" name="galeri6" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out">
+                </div>
+            </div>
+
+            <!-- Quotes -->
+            <div class="form-group">
+                <label for="quotes" class="block text-gray-700 text-sm font-semibold mb-2">Kata-kata Quotes dari Pembuat CV:</label>
+                <textarea id="quotes" name="quotes" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out resize-y"></textarea>
+            </div>
+
+            <!-- Generate Button -->
+            <button type="button" onclick="generatePrompt()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Buat Prompt & Salin
+            </button>
+        </form>
+
+        <!-- Output Area -->
+        <div id="output" class="bg-blue-50 p-6 rounded-xl mt-8 shadow-inner hidden">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Generated Prompt:</h3>
+            <pre class="whitespace-pre-wrap text-gray-800 text-sm"></pre>
+        </div>
+    </div>
+
+    <!-- Custom Message Box -->
+    <div id="messageBox" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <p id="messageBoxText" class="text-lg font-semibold text-gray-800 mb-4"></p>
+            <button onclick="hideMessageBox()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Get references to elements
+        const elemenCheckboxes = document.querySelectorAll('input[name="elemen"]');
+        const fotoInput = document.getElementById('fotoInput');
+        const galeriInput = document.getElementById('galeriInput');
+        const outputDiv = document.getElementById('output');
+        const outputPre = outputDiv.querySelector('pre');
+        const messageBox = document.getElementById('messageBox');
+        const messageBoxText = document.getElementById('messageBoxText');
+
+        // Event listener for checkbox changes to show/hide related input fields
+        elemenCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+            fotoInput.classList.toggle('hidden', !elemenCheckboxes[0].checked);
+            galeriInput.classList.toggle('hidden', !elemenCheckboxes[1].checked);
+        }));
+
+        /**
+         * Formats a Google Drive link to a direct content link.
+         * @param {string} url The original Google Drive URL.
+         * @returns {string} The formatted direct content URL or the original URL if no match.
+         */
+        function formatDriveLink(url) {
+            const match = url.match(/\/d\/(.*?)(\/|$)/);
+            return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
+        }
+
+        /**
+         * Displays a custom message box with the given message.
+         * @param {string} message The message to display.
+         */
+        function showMessageBox(message) {
+            messageBoxText.textContent = message;
+            messageBox.classList.remove('hidden');
+        }
+
+        /**
+         * Hides the custom message box.
+         */
+        function hideMessageBox() {
+            messageBox.classList.add('hidden');
+        }
+
+        /**
+         * Generates the CV prompt based on form inputs and copies it to the clipboard.
+         */
+        async function generatePrompt() {
+            const f = document.forms['cvForm'];
+
+            // Collect selected elements
+            const elemen = Array.from(f.elements['elemen'])
+                .filter(e => e.checked).map(e => e.value).join(', ');
+
+            // Collect and format gallery links
+            const galeri = ['galeri1', 'galeri2', 'galeri3', 'galeri4', 'galeri5', 'galeri6']
+                .map(id => formatDriveLink(f[id].value)).filter(Boolean).join('\n');
+
+            // Format profile photo link
+            const foto = formatDriveLink(f['foto_link'].value);
+
+            // Construct the prompt string
+            const prompt = `
+Saya ingin kamu bertindak sebagai seorang *frontend developer profesional* yang membuat website CV digital. Website ini harus memiliki desain yang modern, Profesional, dan responsif (mobile-first). Gunakan animasi fade-in lembut saat pengguna melakukan scroll, menciptakan pengalaman interaktif yang elegan dan tidak mengganggu fokus.
+Setiap elemen penting seperti form input, preview hasil CV, dan tombol aksi akan muncul secara bertahap dengan transisi yang halus untuk memberikan kesan modern dan profesional.
+
+Website mencakup beberapa bagian utama seperti:
+- Nama: ${f['nama'].value}
+- Tanggal Lahir: ${f['lahir'].value}
+- Posisi yang Dilamar: ${f['posisi'].value}
+- Deskripsi Singkat Diri: ${f['deskripsi'].value}
+- Kontak: Email ${f['email'].value}, Telepon ${f['telepon'].value}${f['sosmed'].value ? `, Sosmed: ${f['sosmed'].value}` : ''}
+- Pendidikan: ${f['pendidikan'].value}
+- Pengalaman Kerja: ${f['pengalaman'].value}
+- Keahlian: ${f['skill'].value}
+${f['sertifikasi'].value ? `- Sertifikasi: ${f['sertifikasi'].value}` : ''}
+${f['hobi'].value ? `- Hobi/Minat: ${f['hobi'].value}` : ''}
+- Gaya CV: ${f['gaya_cv'].value}
+- Gaya Visual: ${f['gaya_visual'].value}
+- Elemen Tambahan: ${elemen}
+${foto ? '- Link Foto Profil: ' + foto : ''}
+${galeri ? '- Link Galeri Project:\n' + galeri : ''}
+${f['quotes'].value ? `- Kata-kata Quotes: ${f['quotes'].value}` : ''}
+
+Tolong buatkan dalam bentuk website CV interaktif berdasarkan detail di atas.
+`.trim(); // Trim to remove leading/trailing whitespace from the template literal
+
+            // Display the generated prompt
+            outputPre.textContent = prompt;
+            outputDiv.classList.remove('hidden');
+
+            // Copy prompt to clipboard
+            try {
+                await navigator.clipboard.writeText(prompt);
+                showMessageBox("Prompt berhasil disalin ke clipboard!");
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                showMessageBox("Gagal menyalin prompt ke clipboard. Silakan salin manual.");
+            }
+        }
+    </script>
+
+</body>
+</html>
