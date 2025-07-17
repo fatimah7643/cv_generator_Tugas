@@ -3,7 +3,7 @@
 
 ## Tutorial Penggunaan CV Generator
 
-## Link Generator : https://github.com/fatimah7643/cv_generator_Tugas.git
+## Link Generator : [https://github.com/fatimah7643/cv_generator_Tugas.git](https://fatimah7643.github.io/cv_generator_Tugas/)
 
 1. Masukkan nama lengkap Anda pada kolom "Nama".
 2. Isi kolom-kolom lain seperti email, nomor telepon, dan data diri sesuai kebutuhan.
